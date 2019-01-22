@@ -70,7 +70,7 @@ def index(request):
         user_email = request.session.get('user_email',None)
 
         articleList = article.models.Article.objects.filter(author__useremail=user_email)
-        print(user_email,articleList)
+
 
 
     return render(request,'index/index.html',locals())

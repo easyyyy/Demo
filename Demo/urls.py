@@ -26,5 +26,7 @@ urlpatterns = [
     path('index/', views.index),
     path('forget/', views.forgetpassword),
     path('logout/', views.logout),
-    path('detail/', article.views.detail),
+    path('detail/<int:articleId>/', article.views.detail),
+    path('<int:articleId>/edit/', article.views.edit),
+
 ]

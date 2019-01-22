@@ -22,7 +22,7 @@
 
                             {% if request.session.is_login %}
                             <ul>
-                                <li><a href="/index/">当前在线：{{ request.session.user_name }}</a></li>
+                                <li><a href="#">当前在线：{{ request.session.user_name }}</a></li>
 								<li><a href="/logout/">退出</a></li>
 							</ul>
                             {% else %}
@@ -47,8 +47,33 @@
 							</ul>
 						</nav>
 					</header>
-                    {% block content %}{% endblock %}
+                    <article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">{{ article.title }}</a></h2>
+										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-11-01">{{ article.date }}</time>
+										<a href="#" class="author"><span class="name">{{ article.author.username }}</span><img src="../../static/images/avatar.jpg" alt="" /></a>
+									</div>
+								</header>
+								<a href="#" class="image featured"><img src="../../static/images/pic01.jpg" alt="" /></a>
+								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+								<p>{{ article.textbody }}</p>
+                                <footer>
+									<ul class="actions">
+										<li><a href="#" class="button big">编辑</a></li>
+									</ul>
+									<ul class="stats">
+										<li><a href="#">General</a></li>
+										<li><a href="#" class="icon fa-heart">28</a></li>
+										<li><a href="#" class="icon fa-comment">128</a></li>
+									</ul>
+								</footer>
+							</article>
             </div>
+
 
 		<!-- Scripts -->
 			<script src="../../static/index/js/jquery.min.js"></script>
