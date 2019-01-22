@@ -3,6 +3,7 @@ import time
 from django.shortcuts import render,redirect
 
 # Create your views here.
+import article.models
 from login import forms, models
 
 
@@ -52,6 +53,7 @@ def signin(request):
             if user.userpassword == userpassword:
                 request.session['is_login'] = True
                 request.session['user_name'] = user.username
+                request.session['user_email'] = user.useremail
                 return redirect('/index/')
             else:
                 message = '用户名或密码错误！'
@@ -62,8 +64,15 @@ def signin(request):
     return render(request,'login/sign-in.html',locals())
 
 def index(request):
-
     nowtime = time.strftime('%B  %d,%Y')
+    if request.session.get('is_login',None):
+
+        user_email = request.session.get('user_email',None)
+
+        articleList = article.models.Article.objects.filter(author__useremail=user_email)
+        print(user_email,articleList)
+
+
     return render(request,'index/index.html',locals())
 
 def forgetpassword(request):
