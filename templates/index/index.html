@@ -23,6 +23,7 @@
                             <ul>
                                 <li><a href="#">当前在线：{{ request.session.user_name }}</a></li>
 								<li><a href="/logout/">退出</a></li>
+                                <li><a href="/add/">添加文章</a></li>
 							</ul>
                             {% else %}
                             <ul>
@@ -34,6 +35,10 @@
 						</nav>
 						<nav class="main">
 							<ul>
+
+                                <li>
+                                    <a href="/add/" id="add">添加文章</a>
+                                </li>
 								<li class="search">
 									<a class="fa-search" href="#search">Search</a>
 									<form id="search" method="get" action="#">
@@ -115,7 +120,7 @@
 								</header>
 								<a href="#" class="image featured"><img src="../../static/images/pic01.jpg" alt="" /></a>
 
-								<p>{{ article.textbody</p>
+								<p>{{ article.textbody }}</p>
 								<footer>
 									<ul class="actions">
 										<li><a href="/detail/{{ article.id }}" class="button big">Continue Reading</a></li>

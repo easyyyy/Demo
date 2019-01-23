@@ -1,0 +1,32 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+
+<div class="post">
+
+<section>
+                    <h3>Form</h3>
+                    <form method="post" action="/add/">
+                        {% csrf_token %}
+                        <div class="row uniform">
+                            <div class="6u 12u$(xsmall)">
+
+                                <input type="text" name="title" id="demo-name" value="" placeholder="标题" />
+                            </div>
+
+
+                            <div class="12u$">
+                                <textarea name="text" id="demo-message" value="" rows="6"></textarea>
+                            </div>
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><input type="submit" value="编辑" /></li>
+                                    <li><input type="reset" value="Reset" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+</div>
+
+{% endblock %}

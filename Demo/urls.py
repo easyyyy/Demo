@@ -28,5 +28,6 @@ urlpatterns = [
     path('logout/', views.logout),
     path('detail/<int:articleId>/', article.views.detail),
     path('<int:articleId>/edit/', article.views.edit),
+    path('add/', article.views.add),
 
 ]
