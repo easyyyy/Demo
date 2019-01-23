@@ -29,5 +29,6 @@ urlpatterns = [
     path('detail/<int:articleId>/', article.views.detail),
     path('<int:articleId>/edit/', article.views.edit),
     path('add/', article.views.add),
+    path('delete/<int:articleId>/', article.views.delete),
 
 ]

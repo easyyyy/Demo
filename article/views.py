@@ -45,3 +45,8 @@ def add(request):
 
         return redirect('/index/')
     return render(request,'index/add.html')
+
+
+def delete(request,articleId):
+    models.Article.objects.get(id=articleId).delete()
+    return redirect('/index/')
