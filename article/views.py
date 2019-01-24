@@ -50,3 +50,8 @@ def add(request):
 def delete(request,articleId):
     models.Article.objects.get(id=articleId).delete()
     return redirect('/index/')
+
+
+# def search(request):
+#
+#     return render(request,'')

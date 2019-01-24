@@ -69,11 +69,21 @@ def index(request):
 
         user_email = request.session.get('user_email',None)
 
-        articleList = article.models.Article.objects.filter(author__useremail=user_email)
-
+        articleList = article.models.Article.objects.filter(author__useremail=user_email).order_by('-id')[:5]
 
 
     return render(request,'index/index.html',locals())
+
+def indexOtherPage(request,page):
+    nowtime = time.strftime('%B  %d,%Y')
+    if request.session.get('is_login', None):
+        user_email = request.session.get('user_email', None)
+        articleAll = len(article.models.Article.objects.filter(author__useremail=user_email))
+        maxpage = int(articleAll/5) + 1
+        articleList = article.models.Article.objects.filter(author__useremail=user_email).order_by('-id')[(page-1)*5:page*5]
+        nextpage = page + 1
+        previouspage = page - 1
+    return render(request, 'index/index.html', locals())
 
 def forgetpassword(request):
 

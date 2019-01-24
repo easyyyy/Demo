@@ -1,0 +1,42 @@
+{% extends 'index/base.html' %}
+{% load highlight %}
+{% block content %}
+
+    {% if query %}
+
+        {% for result in page.object_list %}
+
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="#">{% highlight result.object.title with query %}</a></h2>
+                        <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+                    </div>
+                    <div class="meta">
+                        <time class="published" datetime="2015-11-01">{{ result.object.date }}</time>
+                        <a href="#" class="author"><span class="name">{{ result.object.author.username }}</span><img src="../../static/images/avatar.jpg" alt="" /></a>
+                    </div>
+                </header>
+                <a href="#" class="image featured"><img src="../../static/images/pic01.jpg" alt="" /></a>
+
+                <p>{% highlight result.object.textbody with query %}</p>
+                <footer>
+                    <ul class="actions">
+                        <li><a href="/detail/{{ result.object.id }}" class="button big">Continue Reading</a></li>
+                    </ul>
+                    <ul class="stats">
+                        <li><a href="#">General</a></li>
+                        <li><a href="#" class="icon fa-heart">28</a></li>
+                        <li><a href="#" class="icon fa-comment">128</a></li>
+                    </ul>
+                </footer>
+            </article>
+        {% endfor %}
+        {% else %}
+        <p>结果不存在</p>
+
+    {% endif %}
+
+
+
+    {% endblock %}
