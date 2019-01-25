@@ -70,7 +70,7 @@ def index(request):
         user_email = request.session.get('user_email',None)
 
         articleList = article.models.Article.objects.filter(author__useremail=user_email).order_by('-id')[:5]
-
+        page = 1
 
     return render(request,'index/index.html',locals())
 
@@ -83,6 +83,7 @@ def indexOtherPage(request,page):
         articleList = article.models.Article.objects.filter(author__useremail=user_email).order_by('-id')[(page-1)*5:page*5]
         nextpage = page + 1
         previouspage = page - 1
+
     return render(request, 'index/index.html', locals())
 
 def forgetpassword(request):
